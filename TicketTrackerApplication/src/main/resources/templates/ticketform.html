@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<title>Ticket Tracker Application</title>
+<style>
+body {
+	background: #CBDCF7;
+	margin: 0;
+}
+
+.container {
+	margin-top: 20px;
+	border-color: dodgerblue;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 15px;
+	height: 555px;
+	width: 800px
+}
+pre{
+font-style: italic;
+font-size: 20px;
+background-color: rgb(120, 162, 254);
+font: rgb(255,255,255);
+}
+textarea{
+
+display: block;
+margin: 10;
+
+}
+h2{
+ background-color: rgb(211, 242, 254);
+ padding:5%;
+}
+header>a{
+color: rgb(255,255,255);
+}
+
+</style>
+</head> <!--  this form is used to collect the details about the ticket-->
+<body><pre>
+<header>
+<b><i>Ticket Tracker Application  </i></b><a  href="/tickets/getall">Tickets  </a><a href="/tickets/newTicket">New Ticket</a>
+
+</header></pre>
+	<div class="container"  > 
+		<h2 th:text="${message}" align="center"></h2>
+		<form action="#" th:action="@{save}" th:object="${ticket}"
+			method="post">
+			<br>
+			<label for="ticketTitle">Title:</label> 
+			<input  type="text" id="ticketTitle" th:field="*{ticketTitle}" class="form-control mb-4 col-4" placeholder="Enter Ticket Title"  th:readonly="${readonly}"required> 
+			
+			<label for="ticketShortDescription">Short Description:</label> 
+			<input type="text"  id="ticketShortDescription" th:field="*{ticketShortDescription}" class="form-control mb-4 col-4" placeholder="ticket Description" th:readonly="${readonly}" required>
+			
+			<label for="content">Content:</label>
+			 <textarea name="newtext" rows="4"cols="50" th:field="*{content}" class="form-control mb-4 col-50" placeholder="Enter the content here..." th:readonly="${readonly}"></textarea>
+			
+			<input type="submit" class="btn btn-info col-2"  th:value="${button}"th:readonly="${readonly}">
+		</form>
+	</div>
+	<div align="center">
+		<h4>Copyright &copy;2023 GreatLearning All right reserved</h4>
+	</div>
+</body>
+</html>
